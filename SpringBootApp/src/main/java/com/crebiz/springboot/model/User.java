@@ -28,6 +28,9 @@ public class User implements Serializable{
 	@Column(name="SALARY", nullable=false)
 	private double salary;
 
+	@Column(name="EMAIL", nullable=false)
+	private String email;
+	
 	public Long getId() {
 		return id;
 	}
@@ -60,6 +63,14 @@ public class User implements Serializable{
 		this.salary = salary;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
