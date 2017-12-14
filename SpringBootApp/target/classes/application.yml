@@ -1,7 +1,7 @@
 ---
 server:
   port: 8080
-  contextPath: /SpringBootCRUDApp
+  contextPath: /SpringBootApp
 ---
 spring:
   profiles: local, default
@@ -18,14 +18,16 @@ datasource:
       show_sql: true
       format_sql: true
       dialect: org.hibernate.dialect.H2Dialect
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
 ---
 spring:
   profiles: prod
 datasource:
   sampleapp:
-    url: jdbc:mysql://localhost:3306/crebiz
-    username: myuser
-    password: mypassword
+    url: jdbc:mysql://localhost:3306/my_account_db
+    username: root
+    password: QWas12!!
     driverClassName: com.mysql.jdbc.Driver
     defaultSchema:
     maxPoolSize: 20
@@ -34,4 +36,17 @@ datasource:
       show_sql: true
       format_sql: true
       dialect: org.hibernate.dialect.MySQLDialect
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    queries:
+      users-query: select email, password, active from user where email=?
+      roles-query: select u.email, r.role from user u inner join user_role ur on(u.user_id=ur.user_id) inner join role r on(ur.role_id=r.role_id) where u.email=?
+    thymeleaf:
+      mode: LEGACYHTML5
+      cache: false
+
+
+  
+
+
 

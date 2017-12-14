@@ -100,9 +100,12 @@ public class JpaConfiguration {
 		properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("datasource.sampleapp.hibernate.hbm2ddl.method"));
 		properties.put("hibernate.show_sql", environment.getRequiredProperty("datasource.sampleapp.hibernate.show_sql"));
 		properties.put("hibernate.format_sql", environment.getRequiredProperty("datasource.sampleapp.hibernate.format_sql"));
+		properties.put("hibernate.ddl-auto", environment.getRequiredProperty("datasource.sampleapp.hibernate.ddl-auto"));
+		properties.put("hibernate.naming-strategy", environment.getRequiredProperty("datasource.sampleapp.hibernate.naming-strategy"));
 		if(StringUtils.isNotEmpty(environment.getRequiredProperty("datasource.sampleapp.defaultSchema"))){
 			properties.put("hibernate.default_schema", environment.getRequiredProperty("datasource.sampleapp.defaultSchema"));
 		}
+
 		return properties;
 	}
 

@@ -6,12 +6,17 @@ import org.springframework.context.annotation.Import;
 
 import com.crebiz.springboot.configuration.JpaConfiguration;
 
-
+/**
+ * Spring Boot + Spring MVC + Spring Security + MySQL
+ * https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
+ * @author Gustavo Ponce
+ * 2017.12.14
+ */
 @Import(JpaConfiguration.class)
 @SpringBootApplication(scanBasePackages={"com.crebiz.springboot"})// same as @Configuration @EnableAutoConfiguration @ComponentScan
-public class SpringBootCRUDApp {
+public class SpringBootApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootCRUDApp.class, args);
+		SpringApplication.run(SpringBootApp.class, args);
 	}
 }

@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: SpringBootApp
 Implementation-Version: 1.0.0
-Built-By: crebiz
+Built-By: DELL
 Implementation-Vendor-Id: com.crebiz.springboot
-Build-Jdk: 1.8.0_151
+Build-Jdk: 1.8.0_131
 Implementation-URL: http://projects.spring.io/spring-boot/SpringBootAp
  p/
 Created-By: Maven Integration for Eclipse
