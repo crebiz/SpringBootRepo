@@ -1,13 +1,19 @@
-package com.crebiz.springboot.service;
+package com.crebiz.springboot.service.impl;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.crebiz.springboot.model.Role;
 import com.crebiz.springboot.model.User;
+import com.crebiz.springboot.repositories.RoleRepository;
 import com.crebiz.springboot.repositories.UserRepository;
+import com.crebiz.springboot.service.UserService;
 
 
 
@@ -17,6 +23,12 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public User findById(Long id) {
 		return userRepository.findOne(id);
@@ -31,6 +43,11 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public void saveUser(User user) {
+		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		user.setActive(1);
+		Role userRole = roleRepository.findByRole("ADMIN");
+		
+		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
 	}
 
